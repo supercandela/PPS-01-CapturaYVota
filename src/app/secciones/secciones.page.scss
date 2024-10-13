@@ -1,0 +1,64 @@
+.lindo {
+    --background: rgb(152, 251, 152);
+
+    .botones-container {
+        background-image: url('../../assets/images/BotonSi-secciones-manito.png');
+
+        button {
+            background-color: rgb(11, 138, 11);
+            /* Color de fondo de los botones */
+        }
+    }
+}
+
+.feo {
+    --background: rgb(255, 188, 88);
+
+    .botones-container {
+        background-image: url('../../assets/images/BotonNo-secciones-manito.png');
+
+        button {
+            background-color: rgb(138, 72, 11);
+            /* Color de fondo de los botones */
+        }
+    }
+}
+
+.botones-container {
+    /* Asegura que la imagen cubra todo el botón */
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* Espacio entre los botones */
+    padding: 20px;
+
+    .boton-alto {
+        height: 120px;
+        /* Ajusta la altura de los botones */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 18px;
+        border-radius: 20px;
+
+        ion-icon {
+            display: block;
+            font-size: 40px;
+            /* Tamaño del ícono */
+            margin-bottom: 10px;
+            /* Espacio entre el ícono y el texto */
+        }
+
+        span {
+            display: block;
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    }
+}

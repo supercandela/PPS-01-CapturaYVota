@@ -21,7 +21,18 @@ const routes: Routes = [
   {
     path: 'splash',
     loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+  },
+  {
+    path: 'secciones',
+    children: [
+      {
+        path: ':seleccion',
+        loadChildren: () => import('./secciones/secciones.module').then( m => m.SeccionesPageModule),
+        canMatch: [authGuard]
+      }
+    ]
   }
+
 ];
  
 @NgModule({

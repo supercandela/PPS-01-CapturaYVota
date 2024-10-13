@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        Ir atrás
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ seleccion === 'lindo' ? 'Cosas Lindas' : 'Cosas Feas' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="seleccion">
+  <div class="botones-container">
+    <!-- Botón para tomar una foto -->
+    <button (click)="tomarFoto()" expand="full" class="boton-alto">
+      <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+      <span>Tomar una foto</span>
+    </button>
+
+    <!-- Botón para mostrar fotos -->
+    <button (click)="mostrarFotos()" expand="full" class="boton-alto">
+      <ion-icon slot="icon-only" name="images-outline"></ion-icon>
+      <span>Mostrar fotos</span>
+    </button>
+
+    <!-- Botón para mostrar fotos propias -->
+    <button (click)="mostrarFotosPropias()" expand="full" class="boton-alto">
+      <ion-icon slot="icon-only" name="albums-outline"></ion-icon>
+      <span>Mostrar fotos propias</span>
+    </button>
+  </div>
+</ion-content>
