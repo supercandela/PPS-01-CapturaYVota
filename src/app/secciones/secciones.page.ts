@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { Location } from '@angular/common';
@@ -13,14 +13,17 @@ import {
   orderBy,
   where,
 } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-secciones',
   templateUrl: './secciones.page.html',
   styleUrls: ['./secciones.page.scss'],
 })
-export class SeccionesPage implements OnInit {
-  seleccion?: string;
+export class SeccionesPage implements OnInit, OnDestroy {
+  seleccion: string = '';
+  usuario: string = '';
+  sub?: Subscription
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +35,9 @@ export class SeccionesPage implements OnInit {
 
   ngOnInit() {
     this.seleccion = this.route.snapshot.paramMap.get('seleccion') || '';
+    this.sub = this.authService.userEmail.subscribe((respuesta: any) => {
+      this.usuario = respuesta;
+    });
   }
 
   async tomarFoto() {
@@ -48,10 +54,10 @@ export class SeccionesPage implements OnInit {
   }
 
   subirFoto(base64String: string) {
-    let col = collection(this.firestore, 'capturaYVota');
+    let col = collection(this.firestore, 'capturayvota');
     addDoc(col, {
       seleccion: this.seleccion,
-      usuario: this.authService.userEmail,
+      usuario: this.usuario,
       fecha: new Date(),
       foto: base64String,
       votos: 0
@@ -69,5 +75,9 @@ export class SeccionesPage implements OnInit {
   // Método para regresar a la página anterior
   goBack(): void {
     this.location.back();
+  }
+
+  ngOnDestroy () {
+    this.sub?.unsubscribe();
   }
 }
