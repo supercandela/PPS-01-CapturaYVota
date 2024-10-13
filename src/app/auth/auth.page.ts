@@ -18,36 +18,46 @@ export class AuthPage {
   isLogin = false;
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router,
     private loadingCtrl: LoadingController,
     private alertCtrl: AlertController
   ) {}
 
-
-  authenticate (authform: NgForm) {
+  authenticate(authform: NgForm) {
     this.isLoading = true;
     this.loadingCtrl
-      .create({ keyboardClose: true, message: 'Ingresando, aguarde unos instantes...' })
-      .then(loadingEl => {
+      .create({
+        keyboardClose: true,
+        message: 'Ingresando, aguarde unos instantes...',
+      })
+      .then((loadingEl) => {
         loadingEl.present();
 
         let authObs: Observable<AuthResponseData>;
 
         //Chequea si el usuario se quiere loguear o si quiere crear una nueva cuenta y hace el llamado a la api según lo que necesita
         if (this.isLogin) {
-          authObs = this.authService.login(authform.value.email, authform.value.password);
+          authObs = this.authService.login(
+            authform.value.email,
+            authform.value.password
+          );
         } else {
-          authObs = this.authService.signup(authform.value.email, authform.value.password);
+          authObs = this.authService.signup(
+            authform.value.email,
+            authform.value.password
+          );
         }
-        authObs.subscribe(resData => {
+        authObs.subscribe(
+          (resData) => {
             console.log(resData);
             this.isLoading = false;
             loadingEl.dismiss();
             authform.controls['email'].setValue('');
             authform.controls['password'].setValue('');
             this.router.navigateByUrl('/home');
-          }, errorRes => {
+          },
+          (errorRes) => {
             loadingEl.dismiss();
             const code = errorRes.error.error.message;
             let message = 'No pudiste acceder. Volvé a intentarlo.';
@@ -59,10 +69,12 @@ export class AuthPage {
             } else if (code === 'INVALID_PASSWORD') {
               message = 'La contraseña es incorrecta.';
             } else if (code === 'INVALID_LOGIN_CREDENTIALS') {
-              message = 'E-mail o contraseña incorrectos. Por favor, vuelva a intentar.'
+              message =
+                'E-mail o contraseña incorrectos. Por favor, vuelva a intentar.';
             }
             this.showAlert(message);
-          });
+          }
+        );
       });
   }
 
@@ -78,17 +90,17 @@ export class AuthPage {
     this.authenticate(authform);
   }
 
-  private showAlert (message: string) {
+  private showAlert(message: string) {
     this.alertCtrl
       .create({
         header: '¡Error en el inicio de sesión!',
         message: message,
-        buttons: ['Ok']
+        buttons: ['Ok'],
       })
-      .then(alertEl => alertEl.present());
+      .then((alertEl) => alertEl.present());
   }
 
-  onFastLogin (authform: NgForm, email: string, password: string) {
+  onFastLogin(authform: NgForm, email: string, password: string) {
     authform.controls['email'].setValue(email);
     authform.controls['password'].setValue(password);
   }

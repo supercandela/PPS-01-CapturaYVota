@@ -1,32 +1,35 @@
 @-webkit-keyframes slide-in-elliptic-bottom-fwd {
     0% {
         -webkit-transform: translateY(600px) rotateX(30deg) scale(0);
-                transform: translateY(600px) rotateX(30deg) scale(0);
+        transform: translateY(600px) rotateX(30deg) scale(0);
         -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0) rotateX(0) scale(1);
-                transform: translateY(0) rotateX(0) scale(1);
+        transform: translateY(0) rotateX(0) scale(1);
         -webkit-transform-origin: 50% -1400px;
-                transform-origin: 50% -1400px;
+        transform-origin: 50% -1400px;
         opacity: 1;
     }
 }
+
 @keyframes slide-in-elliptic-bottom-fwd {
     0% {
         -webkit-transform: translateY(600px) rotateX(30deg) scale(0);
-                transform: translateY(600px) rotateX(30deg) scale(0);
+        transform: translateY(600px) rotateX(30deg) scale(0);
         -webkit-transform-origin: 50% 100%;
-                transform-origin: 50% 100%;
+        transform-origin: 50% 100%;
         opacity: 0;
     }
+
     100% {
         -webkit-transform: translateY(0) rotateX(0) scale(1);
-                transform: translateY(0) rotateX(0) scale(1);
+        transform: translateY(0) rotateX(0) scale(1);
         -webkit-transform-origin: 50% -1400px;
-                transform-origin: 50% -1400px;
+        transform-origin: 50% -1400px;
         opacity: 1;
     }
 }
@@ -36,6 +39,7 @@ ion-content {
 
     .titulo {
         margin-top: 12vh;
+
         h1 {
             color: white;
             font-size: 3em;
@@ -48,7 +52,7 @@ ion-content {
         margin-top: 10vh;
 
         ion-label {
-            background-color:  rgb(255, 188, 88);
+            background-color: rgb(255, 188, 88);
             color: white;
             padding: 10px;
             font-size: medium;
@@ -61,7 +65,7 @@ ion-content {
         margin-top: 8vh;
 
         ion-label {
-            background-color:  rgb(255, 188, 88);
+            background-color: rgb(255, 188, 88);
             color: white;
             padding: 10px;
             font-size: medium;
