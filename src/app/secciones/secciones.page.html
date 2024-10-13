@@ -28,5 +28,12 @@
       <ion-icon slot="icon-only" name="albums-outline"></ion-icon>
       <span>Mostrar fotos propias</span>
     </button>
+
+    <!-- Botón para mostrar fotos propias -->
+    <button (click)="verEstadisticas()" expand="full" class="boton-alto">
+      <ion-icon slot="icon-only" name="pie-chart-outline"></ion-icon>
+      <span>Ver estadísticas</span>
+    </button>
   </div>
+  <router-outlet></router-outlet>
 </ion-content>

@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        Ir atrás
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ seleccion === 'lindo' ? 'Cosas Lindas' : 'Cosas Feas' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="seleccion">
+
+  <h3> Estadísticas </h3>
+
+  <div class="fotos-container">
+
+  </div>
+</ion-content>

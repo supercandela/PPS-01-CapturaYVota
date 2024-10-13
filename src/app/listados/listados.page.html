@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        Ir atrás
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ seleccion === 'lindo' ? 'Cosas Lindas' : 'Cosas Feas' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="seleccion">
+
+  <h3> {{ tipoListado === 'listadoGeneral' ? 'Fotos de todos los usuarios' : 'Fotos propias' }} </h3>
+
+  <div class="fotos-container">
+    <div *ngFor="let foto of fotos" class="foto-container">
+      <!-- Mostrar la imagen -->
+      <img [src]="foto.foto" alt="Foto de {{ foto.usuario }}" class="foto">
+  
+      <!-- Mostrar detalles: Usuario, Fecha y Votos -->
+      <div class="foto-detalles">
+        <p><strong>Usuario:</strong> {{ foto.usuario }}</p>
+        <p><strong>Fecha:</strong> {{ foto.fecha }}</p>
+        <p><strong>Votos:</strong> {{ foto.votos }}</p>
+      </div>
+
+      <button *ngIf="tipoListado === 'listadoGeneral'" (click)="votarFoto(foto.fotoId)">Votar Foto</button>
+
+      <div class="custom-separator"></div>
+    </div>
+  </div>
+</ion-content>

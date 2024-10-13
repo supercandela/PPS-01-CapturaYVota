@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../auth/auth.service';
@@ -8,22 +8,10 @@ import { AuthService } from '../auth/auth.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage {
+  constructor(private authService: AuthService, private router: Router) {}
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-    
-  }
-
-  ionViewWillEnter () {
-
-  }
-
-  onLogout () {
+  onLogout() {
     this.authService.logout();
     this.router.navigateByUrl('/auth');
   }

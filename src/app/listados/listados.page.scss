@@ -1,0 +1,101 @@
+.lindo {
+    --background: rgb(152, 251, 152);
+
+    .fotos-container {
+
+        button {
+            background-color: rgb(11, 138, 11);
+            /* Color de fondo de los botones */
+        }
+    }
+}
+
+.feo {
+    --background: rgb(255, 188, 88);
+
+    .fotos-container {
+
+        button {
+            background-color: rgb(138, 72, 11);
+            /* Color de fondo de los botones */
+        }
+    }
+}
+
+h3 {
+    text-shadow: 3px 3px 5px rgb(104, 104, 104);
+    text-align: center;
+}
+
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .foto {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+  }
+  
+  .foto-detalles {
+    text-align: center;
+    margin-top: 10px;
+    background-color: rgba(104,104,104,0.5);
+    border-radius: 15px;
+    padding: 10px;
+  }
+  
+  .foto-detalles p {
+    margin: 5px 0;
+  }
+
+  button {
+    margin-top: 10px;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .custom-separator {
+    height: 4px;
+    background-color: rgb(104, 104, 104); /* Color de la línea */
+    margin: 20px 0; /* Espacio alrededor de la línea */
+    width: 100%; /* Anchura de la línea */
+  }
+  
+  /* Fondo del Alert */
+::ng-deep .alerta-personalizada {
+    --background: linear-gradient(135deg, rgb(11, 138, 11) 0%, rgb(138, 72, 11) 100%);
+    border-radius: 20px;
+}
+
+/* Estilo del header */
+::ng-deep .alerta-personalizada .alert-title {
+    --color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Estilo del header */
+::ng-deep .alerta-personalizada .alert-sub-title {
+    --color: white;
+    font-size: 20px;
+    text-align: center;
+}
+
+/* Estilo del mensaje */
+::ng-deep .alerta-personalizada .alert-message {
+    color: white;
+    font-size: 18px;
+    text-align: center;
+}
+
+/* Estilo de los botones */
+::ng-deep .alerta-personalizada .alert-button {
+    color: rgb(98, 98, 98);
+    background-color: white;
+    border-radius: 5px;
+}
