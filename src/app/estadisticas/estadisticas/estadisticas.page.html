@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        Ir atrás
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ seleccion === 'lindo' ? 'Cosas Lindas' : 'Cosas Feas' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [ngClass]="seleccion">
+
+  <h3> Estadísticas </h3>
+
+  <div>
+    <h2 class="lindas">Estadísticas<br>Cosas Lindas</h2>
+    <ngx-charts-pie-chart
+    [results]="fotos"
+    [scheme]="'natural'"
+    [legend]="true"
+    [legendTitle]="'Leyenda'"
+    >
+    <ng-template #tooltipTemplate let-model="model">
+      <p>{{model.value}} {{model.value != 1 ? 'votos' : 'voto' }}</p>
+      <img [src]="model.extra" alt="" [style.width.px]="200">
+    </ng-template>
+    </ngx-charts-pie-chart>
+  </div>
+</ion-content>

@@ -11,9 +11,45 @@
 
 <ion-content [ngClass]="seleccion">
 
-  <h3> Estadísticas </h3>
+  <h3> Estadísticas<br>{{ seleccion === 'lindo' ? 'Cosas Lindas' : 'Cosas Feas' }} </h3>
 
   <div class="fotos-container">
+
+    <div *ngIf="seleccion === 'lindo'" class="grafico">
+      <ngx-charts-pie-chart
+      [results]="fotos"
+      [scheme]="'solar'"
+      [gradient]="true"
+      [legend]="false"
+      [labels]="true"
+      >
+      <ng-template #tooltipTemplate let-model="model">
+        <p>{{model.value}} {{model.value !== 1 ? 'votos' : 'voto' }}</p>
+        <img [src]="model.extra" alt="" [style.width.px]="200">
+      </ng-template>
+      </ngx-charts-pie-chart>
+    </div>
+
+    <div *ngIf="seleccion !== 'lindo'" class="grafico">
+      <ngx-charts-bar-horizontal
+      [view]="[400, 550]"
+      [results]="fotos"
+      [legend]="false"
+      [xAxis]="true"
+      [yAxis]="true"
+      [xAxisLabel]="'Foto'"
+      [yAxisLabel]="'Votos'"
+      [showXAxisLabel]="true"
+      [showYAxisLabel]="true"
+      [scheme]="'night'"
+      style="fill: #FFFFFF;"
+      >
+      <ng-template #tooltipTemplate let-model="model">
+        <p>{{model.value}} {{model.value !== 1 ? 'votos' : 'voto' }}</p>
+        <img [src]="model.extra" alt="" [style.width.px]="200">
+      </ng-template>
+      </ngx-charts-bar-horizontal>
+    </div>
 
   </div>
 </ion-content>
